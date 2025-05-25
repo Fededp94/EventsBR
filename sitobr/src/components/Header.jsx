@@ -11,7 +11,7 @@ const Header = () => {
       <nav>
         <ul className="menu">
           <li>
-            <span>EVENTI</span>
+            <span>CALENDARIO</span>
           </li>
           <li>
             <span>PROSPECTUS</span>

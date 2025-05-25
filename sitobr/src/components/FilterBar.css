@@ -13,17 +13,12 @@
 
 .filter-bar button {
   padding: 0.5rem 1rem;
-  background-color: #70b62b;
+  background-color: #ffe600;
   border: none;
-  color: white;
+  color: #333333;
   font-weight: bold;
   cursor: pointer;
   border-radius: 4px;
-}
-
-.filter-bar button.reset {
-  background-color: #ddd;
-  color: #333;
 }
 
 .filter-bar button:hover {
@@ -31,7 +26,7 @@
 }
 
 .skew-button {
-  background-color: #70b62b;
+  background-color: #ffe600;
   color: white;
   border: none;
   padding: 0.5rem 1.5rem;
@@ -41,13 +36,45 @@
   display: inline-block;
   transition: background-color 0.3s ease;
   margin-right: 1rem;
+  margin-left: 1%;
 }
 
 .skew-button span {
   display: inline-block;
   transform: skew(20deg);
+  border: none;
 }
 
 .skew-button:hover {
-  background-color: #5a9e23;
+  background-color: #e2cc00;
+}
+
+/* DROPDOWN*/
+
+select {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  appearance: none; /* Rimuove lo stile predefinito del browser */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Stile al passaggio del mouse */
+select:hover {
+  background-color: #e0e0e0;
+}
+
+/* Stile per le opzioni */
+option {
+  background-color: #fff;
+  color: #333;
+  font-weight: 400;
+}
+
+option:hover {
+  color: #ffe600;
 }

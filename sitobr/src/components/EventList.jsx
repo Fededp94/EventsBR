@@ -32,7 +32,7 @@ const events = [
 const EventList = () => {
   return (
     <div className="event-list">
-      <h2>Find your Event</h2>
+      <h2>Trova il tuo Evento</h2>
       <div className="card-grid">
         {events.map((event, index) => (
           <EventCard key={index} {...event} />
