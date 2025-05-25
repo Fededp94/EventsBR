@@ -1,0 +1,83 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: #70b62b;
+}
+
+/* LOGO BR */
+
+.logo img {
+  width: 70px;
+  height: 90px;
+}
+
+/* PULSANTE PROFILO */
+
+.apply-button {
+  background-color: #ffe600;
+  color: #333333;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transform: skew(-20deg);
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  margin-right: 1rem;
+}
+
+.apply-button {
+  font-weight: 600;
+}
+
+.apply-button span {
+  display: inline-block;
+  transform: skew(20deg);
+}
+
+.apply-button:hover {
+  background-color: #e2cc00;
+}
+
+/*PULSANTI HEADER */
+
+.menu li {
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333333;
+}
+
+.menu li span {
+  display: inline-block;
+}
+
+.menu li:not(:has(button)):hover {
+  transform: skew(-20deg);
+  background-color: #ffe600;
+  color: white;
+}
+
+.menu li:not(:has(button)):hover span {
+  transform: skew(20deg);
+}

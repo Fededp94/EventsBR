@@ -1,0 +1,53 @@
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.filter-bar select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.filter-bar button {
+  padding: 0.5rem 1rem;
+  background-color: #70b62b;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.filter-bar button.reset {
+  background-color: #ddd;
+  color: #333;
+}
+
+.filter-bar button:hover {
+  opacity: 0.9;
+}
+
+.skew-button {
+  background-color: #70b62b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transform: skew(-20deg);
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  margin-right: 1rem;
+}
+
+.skew-button span {
+  display: inline-block;
+  transform: skew(20deg);
+}
+
+.skew-button:hover {
+  background-color: #5a9e23;
+}
