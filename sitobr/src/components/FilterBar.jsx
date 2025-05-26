@@ -4,7 +4,7 @@ import "./FilterBar.css";
 const FilterBar = () => {
   return (
     <div className="filter-bar">
-      <select>
+      <select defaultValue="">
         <option disabled selected>
           Luogo
         </option>

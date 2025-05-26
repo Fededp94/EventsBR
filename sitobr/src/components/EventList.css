@@ -8,3 +8,92 @@
   gap: 2rem;
   justify-content: center;
 }
+
+/* FRECCE LATERALI */
+
+.event-list {
+  position: relative;
+  padding: 2rem;
+}
+
+.card-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-grid.scrollable {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 2rem;
+}
+
+.card-grid.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.arrow.left {
+  left: 0.5rem;
+}
+
+.arrow.right {
+  right: 0.5rem;
+}
+
+/* Rende le card flessibili in larghezza */
+.card-grid.scrollable > * {
+  flex: 0 0 calc(20% - 0.8rem); /* 5 card per riga con gap */
+}
+
+/* MODIFICA STILE FRECCE */
+
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0.5rem;
+  z-index: 10;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-button:hover {
+  transform: translateY(-50%) scale(1.1);
+  background-color: #ffe600;
+  color: white;
+}
+
+.arrow-button.left {
+  left: 10px;
+}
+
+.arrow-button.right {
+  right: 10px;
+}

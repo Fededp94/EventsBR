@@ -6,6 +6,12 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .event-card img {
@@ -22,8 +28,8 @@
 }
 
 .event-date {
-  background-color: #70b62b;
-  color: white;
+  background-color: #ffe600;
+  color: #333333;
   font-weight: bold;
   padding: 0.25rem 0.5rem;
   display: inline-block;
@@ -40,4 +46,8 @@
 .event-time {
   font-size: 0.9rem;
   color: #555;
+}
+
+.event-status {
+  color: #ffe600;
 }

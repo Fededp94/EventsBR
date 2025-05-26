@@ -17,7 +17,7 @@ const Header = () => {
             <span>PROSPECTUS</span>
           </li>
           <li>
-            <span>SU DI NOI</span>
+            <span>CHI SIAMO</span>
           </li>
           <li>
             <span>CONTATTI</span>
