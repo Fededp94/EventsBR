@@ -14,7 +14,7 @@ const Header = () => {
             <span>CALENDARIO</span>
           </li>
           <li>
-            <span>PROSPECTUS</span>
+            <span>LE NOSTRE BIRRE</span>
           </li>
           <li>
             <span>CHI SIAMO</span>
