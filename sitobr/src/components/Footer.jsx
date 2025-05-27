@@ -24,6 +24,11 @@ const Footer = () => {
       <p className="copyright">
         &copy; 2023 - P.IVA 13110090969 - Tutti i diritti riservati
       </p>
+      <button
+        className="secret-admin-button"
+        onClick={() => window.dispatchEvent(new Event("showAdminLogin"))}>
+        .
+      </button>
     </footer>
   );
 };

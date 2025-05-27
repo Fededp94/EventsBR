@@ -11,7 +11,7 @@ const Header = () => {
       <nav>
         <ul className="menu">
           <li>
-            <span>CALENDARIO</span>
+            <span>VIENI A BERE CON NOI</span>
           </li>
           <li>
             <span>LE NOSTRE BIRRE</span>
@@ -24,7 +24,7 @@ const Header = () => {
           </li>
           <li>
             <button className="apply-button">
-              <span>ACCOUNT</span>
+              <span>NEWSLETTER</span>
             </button>
           </li>
         </ul>

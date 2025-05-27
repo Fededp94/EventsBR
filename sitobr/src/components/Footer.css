@@ -28,3 +28,19 @@
   font-size: 1rem;
   color: #333333;
 }
+
+/* PULSANTE ADMIN SEGRETO */
+
+.secret-admin-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: black; /* da modificare prima del lancio in trasparent */
+  border: none;
+  color: white;
+  opacity: 10; /* da modificare prima del lancio 0.0 */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1000;
+}
