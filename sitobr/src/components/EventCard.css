@@ -51,3 +51,60 @@
 .event-status {
   color: #ffe600;
 }
+
+.event-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.event-actions button {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.event-actions button:hover {
+  background: #ffe600;
+}
+
+.event-description {
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.event-description-bubble {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+  max-width: 240px;
+  z-index: 10;
+}
+
+.event-description-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
