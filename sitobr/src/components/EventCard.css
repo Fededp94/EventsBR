@@ -28,7 +28,7 @@
 }
 
 .event-date {
-  background-color: #ffe600;
+  background-color: #ffe600 !important;
   color: #333333;
   font-weight: bold;
   padding: 0.25rem 0.5rem;
@@ -49,7 +49,7 @@
 }
 
 .event-status {
-  color: #ffe600;
+  color: #ffe600 !important;
 }
 
 .event-actions {

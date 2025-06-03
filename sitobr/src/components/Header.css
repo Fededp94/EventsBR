@@ -148,3 +148,12 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/*Pannello CHI SIAMO */
+
+.menu li span,
+.menu li span:visited,
+.menu li span:active {
+  color: #333333;
+  text-decoration: none;
+}

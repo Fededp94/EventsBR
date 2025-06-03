@@ -1,0 +1,42 @@
+/* ChiSiamo.css */
+
+.chi-siamo-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.chi-siamo-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.chi-siamo-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.chi-siamo-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.back-home-button {
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #ffe600;
+  color: #333;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-home-button:hover {
+  background-color: #e2cc00;
+}

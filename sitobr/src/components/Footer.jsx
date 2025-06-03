@@ -22,7 +22,7 @@ const Footer = () => {
         </a>
       </div>
       <p className="copyright">
-        &copy; 2023 - P.IVA 13110090969 - Tutti i diritti riservati
+        &copy; 2025 - P.IVA 13110090969 - Tutti i diritti riservati
       </p>
       <button
         className="secret-admin-button"

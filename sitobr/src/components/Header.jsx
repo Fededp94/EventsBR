@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "../components/images/LogoBr.png";
 import axios from "axios";
@@ -39,13 +40,12 @@ const Header = () => {
         <nav>
           <ul className="menu">
             <li>
-              <span>VIENI A BERE CON NOI</span>
-            </li>
-            <li>
               <span>LE NOSTRE BIRRE</span>
             </li>
             <li>
-              <span>CHI SIAMO</span>
+              <Link to="/chi-siamo">
+                <span>CHI SIAMO</span>
+              </Link>
             </li>
             <li>
               <span>CONTATTI</span>
