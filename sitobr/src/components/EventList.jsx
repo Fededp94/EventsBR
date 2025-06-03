@@ -1,59 +1,46 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import EventCard from "./EventCard";
+import axios from "axios";
 import "./EventList.css";
 
-const events = [
-  {
-    date: { day: "Jan 16", monthYear: "2025" },
-    location: "UCFB Wembley",
-    title: "UCFB Wembley Undergraduate Open Day (AM Session)",
-    time: "9:30am (2 hour)",
-    status: "Places Available",
-    img: "https://via.placeholder.com/400x300?text=Event1",
-  },
-  {
-    date: { day: "Jan 16", monthYear: "2025" },
-    location: "UCFB Wembley",
-    title: "UCFB Wembley Undergraduate Open Day (PM Session)",
-    time: "1:30pm (2 hour)",
-    status: "Fully Booked",
-    img: "https://via.placeholder.com/400x300?text=Event2",
-  },
-  {
-    date: { day: "Jan 23", monthYear: "2025" },
-    location: "UCFB Manchester",
-    title: "UCFB Manchester Undergraduate Open Day (AM Session)",
-    time: "10:00am (2 hour)",
-    status: "Places Available",
-    img: "https://via.placeholder.com/400x300?text=Event3",
-  },
-  {
-    date: { day: "Jan 23", monthYear: "2025" },
-    location: "UCFB Manchester",
-    title: "UCFB Manchester Undergraduate Open Day (AM Session)",
-    time: "10:00am (2 hour)",
-    status: "Places Available",
-    img: "https://via.placeholder.com/400x300?text=Event3",
-  },
-  {
-    date: { day: "28 Giugno", monthYear: "2025" },
-    location: "UCFB Manchester",
-    title: "UCFB Manchester Undergraduate Open Day (AM Session)",
-    time: "10:00am (2 hour)",
-    status: "Places Available",
-    img: "https://via.placeholder.com/400x300?text=Event3",
-  },
-];
-
-const EventList = () => {
+const EventList = ({ selectedLocation, selectedMonth }) => {
   const scrollRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [events, setEvents] = useState([]);
+
+  const fetchEvents = () => {
+    axios
+      .get("http://localhost:8080/api/events/public")
+      .then((res) => setEvents(res.data))
+      .catch((err) => console.error("Errore nel caricamento eventi:", err));
+  };
+
+  useEffect(() => {
+    fetchEvents();
+    window.addEventListener("refreshEvents", fetchEvents);
+    return () => window.removeEventListener("refreshEvents", fetchEvents);
+  }, []);
+
+  const filteredEvents = events
+    .filter((event) => {
+      const matchesLocation = selectedLocation
+        ? event.location.toLowerCase().includes(selectedLocation.toLowerCase())
+        : true;
+
+      const matchesMonth = selectedMonth
+        ? event.date && event.date.slice(5, 7) === selectedMonth
+        : true;
+
+      return matchesLocation && matchesMonth;
+    })
+    .sort((a, b) => new Date(a.date) - new Date(b.date)); // 🔁 Ordina per data crescente
 
   const scroll = (direction) => {
     const { current } = scrollRef;
-    const scrollAmount = current.offsetWidth / 1.1; // quanto scorre ogni volta
-
+    const cardWidth = 300; // Nuova larghezza della card
+    const gap = 20; // Nuovo gap tra le card
+    const scrollAmount = 5 * (cardWidth + gap); // Scrolla esattamente 5 card
     if (direction === "left") current.scrollLeft -= scrollAmount;
     else current.scrollLeft += scrollAmount;
   };
@@ -82,9 +69,26 @@ const EventList = () => {
         )}
 
         <div className="card-grid scrollable" ref={scrollRef}>
-          {events.map((event, index) => (
-            <EventCard key={index} {...event} />
-          ))}
+          {filteredEvents.length > 0 ? (
+            filteredEvents.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                date={event.date}
+                location={event.location}
+                title={event.title}
+                time={event.time}
+                status={event.status}
+                img={event.imageUrl}
+                description={event.description}
+                isAdmin={false}
+              />
+            ))
+          ) : (
+            <p style={{ padding: "1rem", color: "#666" }}>
+              Nessun evento trovato per i filtri selezionati.
+            </p>
+          )}
         </div>
       </div>
     </div>

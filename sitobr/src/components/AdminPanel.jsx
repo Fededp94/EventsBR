@@ -64,6 +64,13 @@ const AdminPanel = () => {
       const eventData = { ...form, imageUrl };
       delete eventData.image;
 
+      console.log("📦 Evento da inviare:", eventData);
+
+      if (!imageUrl) {
+        alert("❌ Nessuna immagine caricata, impossibile salvare l'evento.");
+        return;
+      }
+
       if (editingId) {
         await axios.put(
           `http://localhost:8080/api/events/admin/${editingId}`,
@@ -78,6 +85,7 @@ const AdminPanel = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("✅ Evento pubblicato!");
+        window.dispatchEvent(new Event("refreshEvents")); // 🔁 aggiorna homepage
       }
 
       setForm({
@@ -93,8 +101,12 @@ const AdminPanel = () => {
       setPreview(false);
       fetchEvents();
     } catch (err) {
-      console.error(err);
-      alert("❌ Errore nella pubblicazione o aggiornamento dell'evento");
+      console.error("❌ Errore evento:", err);
+      if (err.response && err.response.data) {
+        alert(`Errore dal server: ${JSON.stringify(err.response.data)}`);
+      } else {
+        alert("❌ Errore generico nella pubblicazione/aggiornamento evento");
+      }
     }
   };
 
@@ -207,14 +219,15 @@ const AdminPanel = () => {
               required
             />
             <select
-              name="status"
               value={form.status}
               onChange={handleChange}
+              name="status"
               required>
               <option value="">Seleziona stato</option>
               <option value="Posti disponibili">Posti disponibili</option>
               <option value="Sold out">Sold out</option>
             </select>
+
             <input
               name="image"
               type="file"

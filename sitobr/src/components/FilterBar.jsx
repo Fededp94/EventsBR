@@ -1,22 +1,27 @@
 import React from "react";
 import "./FilterBar.css";
 
-const FilterBar = () => {
+const FilterBar = ({
+  selectedLocation,
+  setSelectedLocation,
+  selectedMonth,
+  setSelectedMonth,
+}) => {
   return (
     <div className="filter-bar">
-      <select defaultValue="">
-        <option disabled selected>
-          Luogo
-        </option>
+      <select
+        value={selectedLocation}
+        onChange={(e) => setSelectedLocation(e.target.value)}>
+        <option value="">Tutti i luoghi</option>
         <option value="milano">Milano</option>
-        <option value="napoli">Cernobbio</option>
-        <option value="torino">Napoli</option>
+        <option value="cernobbio">Cernobbio</option>
+        <option value="napoli">Napoli</option>
       </select>
 
-      <select>
-        <option disabled selected>
-          Cerca dal Mese
-        </option>
+      <select
+        value={selectedMonth}
+        onChange={(e) => setSelectedMonth(e.target.value)}>
+        <option value="">Tutti i mesi</option>
         <option value="01">Gennaio</option>
         <option value="02">Febbraio</option>
         <option value="03">Marzo</option>
@@ -31,10 +36,12 @@ const FilterBar = () => {
         <option value="12">Dicembre</option>
       </select>
 
-      <button className="skew-button">
-        <span>Filtra</span>
-      </button>
-      <button className="skew-button">
+      <button
+        className="skew-button"
+        onClick={() => {
+          setSelectedLocation("");
+          setSelectedMonth("");
+        }}>
         <span>Reset</span>
       </button>
     </div>

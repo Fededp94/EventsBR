@@ -1,70 +1,36 @@
 .event-list {
   padding: 2rem;
-}
-
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-/* FRECCE LATERALI */
-
-.event-list {
   position: relative;
-  padding: 2rem;
 }
 
 .card-container {
   position: relative;
   overflow: hidden;
+  max-width: calc(
+    5 * 300px + 4 * 20px + 4rem
+  ); /* 5 card larghe + 4 gap + padding */
+  margin: 0 auto;
+  width: 100%;
 }
 
 .card-grid.scrollable {
   display: flex;
-  gap: 1rem;
+  gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 1rem 2rem;
+  scrollbar-width: none; /* Firefox */
 }
 
 .card-grid.scrollable::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome/Safari */
 }
 
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.3);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 0.5rem;
-  cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s;
-}
-
-.arrow:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.arrow.left {
-  left: 0.5rem;
-}
-
-.arrow.right {
-  right: 0.5rem;
-}
-
-/* Rende le card flessibili in larghezza */
 .card-grid.scrollable > * {
-  flex: 0 0 calc(20% - 0.8rem); /* 5 card per riga con gap */
+  flex: 0 0 300px; /* Ogni card è larga 300px */
 }
 
-/* MODIFICA STILE FRECCE */
+/* FRECCE */
 
 .arrow-button {
   position: absolute;
