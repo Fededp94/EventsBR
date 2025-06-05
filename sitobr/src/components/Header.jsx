@@ -40,7 +40,9 @@ const Header = () => {
         <nav>
           <ul className="menu">
             <li>
-              <span>LE NOSTRE BIRRE</span>
+              <Link to="/birre">
+                <span>LE NOSTRE BIRRE</span>
+              </Link>
             </li>
             <li>
               <Link to="/chi-siamo">

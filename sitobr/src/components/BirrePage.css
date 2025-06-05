@@ -1,0 +1,73 @@
+.birre-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.birra-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.birra-card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.birra-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.birra-card.flipped .birra-card-inner {
+  transform: rotateY(180deg);
+}
+
+.birra-card-front,
+.birra-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.birra-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.birra-card-back {
+  background-color: #fff;
+  transform: rotateY(180deg);
+  padding: 20px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  z-index: 10;
+}
