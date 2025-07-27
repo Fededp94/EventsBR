@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./BirrePage.css";
+import ItalianPilsImg from "../components/images/ItalianPils.jpg";
 
 const beers = [
   {
     id: 1,
-    name: "Birra Chiara",
-    image: "/images/birra-chiara.jpg",
+    name: "Italian Pils - Classy",
+    image: ItalianPilsImg,
     description:
-      "Una birra chiara, leggera e rinfrescante, perfetta per l’estate.",
+      "Birra in stile Italian Pils, composta principalmente da luppoli americani in dry hopping che donano sentori di agrumato, floreale e fruttato, accompagnati da un corpo scorrevole ma presente. Gradazione alcolica del 5% che rende la bevuta molto semplice e rinfrescante.",
   },
   {
     id: 2,
-    name: "Birra Ambrata",
+    name: "Ipa - Ipa",
     image: "/images/birra-ambrata.jpg",
     description:
       "Birra dal gusto pieno con sentori di caramello e frutta secca.",
   },
   {
     id: 3,
-    name: "Birra Scura",
+    name: "Paradise Triple - BertoBeer",
     image: "/images/birra-scura.jpg",
     description: "Intensa e corposa, con aromi di cioccolato e caffè.",
   },
