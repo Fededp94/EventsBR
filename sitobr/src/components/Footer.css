@@ -46,3 +46,20 @@
   cursor: pointer;
   z-index: 1000;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem 0.75rem;
+  }
+  .icon {
+    font-size: 1.6rem;
+  }
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  .secret-admin-button {
+    width: 44px;
+    height: 44px; /* tap target >=44px */
+  }
+}

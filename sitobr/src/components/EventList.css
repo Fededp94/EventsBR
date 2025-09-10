@@ -3,6 +3,11 @@
   position: relative;
 }
 
+.event-list h2 {
+  color: #333333;
+  margin-left: -30px;
+}
+
 .card-container {
   position: relative;
   overflow: hidden;
@@ -60,4 +65,43 @@
 
 .arrow-button.right {
   right: 10px;
+}
+
+/* ====== MOBILE (<=768px) ====== */
+@media (max-width: 768px) {
+  .event-list {
+    padding: 1rem;
+  }
+
+  .card-container {
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  /* Da riga orizzontale a colonna verticale */
+  .card-grid.scrollable {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    overflow: visible; /* niente scroll orizzontale */
+    padding: 0; /* togli padding ai lati */
+  }
+
+  .card-grid.scrollable > * {
+    flex: initial; /* cancella larghezza fissa */
+    width: 100%;
+  }
+
+  /* Niente frecce su mobile */
+  .arrow-button {
+    display: none;
+  }
+}
+
+/* XS (<=480px) per spacing più stretto */
+@media (max-width: 480px) {
+  .event-list h2 {
+    padding-left: 0.5rem;
+    font-size: 1.25rem;
+  }
 }

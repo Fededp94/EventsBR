@@ -47,7 +47,7 @@ const EventList = ({ selectedLocation, selectedMonth }) => {
 
   return (
     <div className="event-list">
-      <h2>Trova il tuo Evento</h2>
+      <h2>I NOSTRI EVENTI</h2>
 
       <div
         className="card-container"
