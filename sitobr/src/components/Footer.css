@@ -31,23 +31,23 @@
   font-weight: 500;
 }
 
-/* PULSANTE ADMIN SEGRETO */
-
+/* PULSANTE ADMIN SEGRETO (desktop) */
 .secret-admin-button {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: black; /* da modificare prima del lancio in trasparent */
+  background-color: transparent; /* era 'none' */
   border: none;
   color: white;
-  opacity: 10; /* da modificare prima del lancio 0.0 */
+  opacity: 0; /* invisibile ma cliccabile su desktop */
   width: 40px;
   height: 40px;
   cursor: pointer;
   z-index: 1000;
 }
 
-@media (max-width: 768px) {
+/* --- Responsive --- */
+@media (max-width: 850px) {
   .footer {
     padding: 1rem 0.75rem;
   }
@@ -58,8 +58,15 @@
     font-size: 0.9rem;
   }
 
+  /* NASCONDI il bottone admin su mobile */
   .secret-admin-button {
-    width: 44px;
-    height: 44px; /* tap target >=44px */
+    display: none !important;
+  }
+}
+
+/* (facoltativo) forza visibile su desktop */
+@media (min-width: 769px) {
+  .secret-admin-button {
+    display: inline-block;
   }
 }

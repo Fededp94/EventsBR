@@ -1,4 +1,4 @@
-/* ChiSiamo.css */
+/* ChiSiamoPage.css */
 
 .chi-siamo-container {
   max-width: 900px;
@@ -7,56 +7,105 @@
   text-align: center;
 }
 
+/* Freccia back fissa quasi a filo del bordo sinistro */
+.back-button {
+  position: fixed;
+  top: 16px;
+  left: 8px; /* vicino al bordo sinistro */
+  background: transparent;
+  border: none;
+  color: #333333;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 50%;
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.back-button:focus-visible {
+  outline: 2px solid #ffe600;
+  outline-offset: 2px;
+}
+
+/* Logo */
 .chi-siamo-logo {
   width: 120px;
   height: auto;
   margin-bottom: 1rem;
 }
 
+/* Titolo */
 .chi-siamo-content h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #333;
+  text-wrap: balance;
 }
 
+/* Testo giustificato, con sillabazione automatica */
 .chi-siamo-content p {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #555;
+
+  /* Bordo destro e sinistro dritti */
+  text-align: justify;
+  text-justify: inter-word;
+
+  /* Migliora la spaziatura e la sillabazione */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+
+  /* Evita righe troppo “vuote” */
+  word-break: normal;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
-.back-home-button {
-  margin-top: 2rem;
-  padding: 0.8rem 1.5rem;
-  background-color: #ffe600;
-  color: #333;
-  border: none;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.back-home-button:hover {
-  background-color: #e2cc00;
-}
-
+/* Responsive */
 @media (max-width: 768px) {
   .chi-siamo-container {
     padding: 1.25rem;
   }
+
+  .back-button {
+    top: 12px;
+    left: 8px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .back-button svg {
+    width: 22px;
+    height: 22px;
+  }
+
   .chi-siamo-logo {
     width: 90px;
   }
+
   .chi-siamo-content h1 {
     font-size: 1.5rem;
   }
+
   .chi-siamo-content p {
     font-size: 1rem;
     line-height: 1.55;
-    text-wrap: pretty;
   }
-  .back-home-button {
-    width: 100%;
+}
+
+/* Safe area (iPhone con notch) */
+@supports (padding: max(0px)) {
+  .back-button {
+    left: calc(env(safe-area-inset-left, 0px) + 8px);
   }
 }

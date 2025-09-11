@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
 import "./Header.css";
 import Logo from "../components/images/LogoBr.png";
 import axios from "axios";
 
 const Header = () => {
-  const [showPanel, setShowPanel] = useState(false);
+  const [showPanel, setShowPanel] = useState(false); // newsletter
+  const [showContacts, setShowContacts] = useState(false); // contatti
+  const [cameFromMobileMenu, setCameFromMobileMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -31,14 +35,14 @@ const Header = () => {
     }
   };
 
-  // Blocca lo scroll quando è aperto menu mobile o pannello newsletter + ESC chiude
   useEffect(() => {
-    const anyOpen = showPanel || mobileMenuOpen;
+    const anyOpen = showPanel || showContacts || mobileMenuOpen;
     document.body.classList.toggle("no-scroll", anyOpen);
 
     const onKeyDown = (e) => {
       if (e.key === "Escape") {
         setShowPanel(false);
+        setShowContacts(false);
         setMobileMenuOpen(false);
       }
     };
@@ -47,7 +51,21 @@ const Header = () => {
       document.body.classList.remove("no-scroll");
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [showPanel, mobileMenuOpen]);
+  }, [showPanel, showContacts, mobileMenuOpen]);
+
+  const openContactsDesktop = () => {
+    setShowContacts(true);
+    setCameFromMobileMenu(false);
+  };
+  const openContactsFromMobile = () => {
+    setCameFromMobileMenu(true);
+    setMobileMenuOpen(false);
+    setShowContacts(true);
+  };
+  const backToMobileMenu = () => {
+    setShowContacts(false);
+    if (cameFromMobileMenu) setMobileMenuOpen(true);
+  };
 
   return (
     <>
@@ -72,7 +90,11 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <span>CONTATTI</span>
+              <button
+                className="menu-link-button"
+                onClick={openContactsDesktop}>
+                <span>CONTATTI</span>
+              </button>
             </li>
             <li>
               <button className="apply-button" onClick={handleTogglePanel}>
@@ -121,14 +143,11 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <a
-              href="#contatti"
-              onClick={(e) => {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-              }}>
+            <button
+              className="mobile-menu-link"
+              onClick={openContactsFromMobile}>
               CONTATTI
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
@@ -165,6 +184,46 @@ const Header = () => {
           Conferma
         </button>
         {message && <p className="newsletter-message">{message}</p>}
+      </aside>
+
+      {/* OVERLAY CONTATTI */}
+      <div
+        className={`contacts-overlay ${showContacts ? "visible" : ""}`}
+        onClick={() => setShowContacts(false)}
+      />
+
+      {/* PANNELLO CONTATTI */}
+      <aside
+        className={`contacts-panel ${showContacts ? "open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contacts-title">
+        {/* back arrow (solo mobile, via CSS) */}
+        <button
+          className="contacts-back"
+          onClick={backToMobileMenu}
+          aria-label="Torna al menu">
+          <FiArrowLeft />
+        </button>
+
+        <h3 id="contacts-title">Contatti</h3>
+
+        {/* >>> QUI L'AGGIORNAMENTO: numeri uno sotto l'altro <<< */}
+        <div className="contacts-content">
+          <p>
+            <strong>Email:</strong> info@drinkbr.it
+          </p>
+          <p>
+            <strong>Telefono:</strong>
+            <br />
+            +39 3933518495
+            <br />
+            +39 3803470184
+          </p>
+          <p>
+            <strong>Sede:</strong> Milano
+          </p>
+        </div>
       </aside>
     </>
   );

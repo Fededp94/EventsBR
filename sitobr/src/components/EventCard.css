@@ -1,21 +1,16 @@
+/* CARD BASE */
 .event-card {
-  width: 300px;
-  height: 400px;
-  perspective: 1000px;
+  position: relative;
+  width: 300px; /* desktop */
+  aspect-ratio: 3 / 4; /* mantiene il rapporto 300x400 */
+  height: auto; /* nessuna altezza fissa */
   cursor: pointer;
-  margin: 20px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background: #dedede;
-  background: linear-gradient(
-    0deg,
-    rgba(222, 222, 222, 1) 0%,
-    rgba(244, 244, 244, 1) 100%
-  );
-  display: flex;
-  flex-direction: column;
+  background: transparent; /* niente gradiente sul contenitore (evita “bande grigie”) */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0; /* lasciamo gestire lo spazio al gap del container */
 }
 
 .event-card-inner {
@@ -30,114 +25,107 @@
   transform: rotateY(180deg);
 }
 
-.event-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+@media (hover: hover) {
+  .event-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
 }
 
+/* FRONT & BACK riempiono tutta la card */
 .event-card-front,
 .event-card-back {
   position: absolute;
-  width: 300px;
-  height: 400px;
+  inset: 0; /* = top/right/bottom/left: 0; */
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   backface-visibility: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: #f4f4f4;
 }
 
+/* Front: solo l’immagine */
 .event-card-front {
+  background: transparent;
   z-index: 2;
 }
 
+/* Immagine sempre a piena card */
+.event-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%; /* riempie sempre */
+  object-fit: cover;
+}
+
+/* Back: descrizione con sfondo (se serve) */
 .event-card-back {
   transform: rotateY(180deg);
   align-items: center;
   justify-content: flex-start;
-  padding: 2rem 1.5rem 1.5rem;
-  margin-right: -20px;
-  animation: slideDown 0.6s ease forwards;
-  background: #f4f4f4;
-  background: #dedede;
+  padding: 1.25rem 1rem;
   background: linear-gradient(
     0deg,
     rgba(222, 222, 222, 1) 0%,
     rgba(244, 244, 244, 1) 100%
   );
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Animazione descrizione che scende */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: rotateY(180deg) translateY(-20%);
-  }
-  to {
-    opacity: 1;
-    transform: rotateY(180deg) translateY(0);
-  }
-}
-
+/* Testo nel retro */
 .event-card-back .event-description-text {
   color: #333;
   font-size: 1rem;
   line-height: 1.5;
-  text-align: center;
-  padding: 0 16px;
-  word-wrap: break-word;
-  max-width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  padding: 0 8px;
   box-sizing: border-box;
 }
 
-.event-card img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-}
-
-.event-card-content {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
+/* Badge data */
 .event-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
   background-color: #ffe600 !important;
   color: #333333;
   font-weight: bold;
   padding: 0.25rem 0.5rem;
-  display: inline-block;
   border-radius: 4px;
   font-size: 0.85rem;
+  z-index: 3;
 }
 
-.event-title {
-  font-size: 1.1rem;
-  font-weight: bold;
+/* Info in basso */
+.event-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.event-location,
-.event-time {
-  font-size: 0.9rem;
-  color: #555;
-}
-
+/* Stato evidenziato */
 .event-status {
   color: #ffe600 !important;
 }
 
+/* Azioni admin (se presenti) */
 .event-actions {
   position: absolute;
   top: 10px;
   right: 10px;
   display: flex;
   gap: 8px;
+  z-index: 3;
 }
-
 .event-actions button {
   background: rgba(255, 255, 255, 0.8);
   border: none;
@@ -146,20 +134,11 @@
   cursor: pointer;
   transition: background 0.3s;
 }
-
 .event-actions button:hover {
   background: #ffe600;
 }
 
-.event-description {
-  margin-top: 10px;
-  color: #fff;
-  font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 8px;
-  border-radius: 5px;
-}
-
+/* Tooltip descrizione su hover (desktop) */
 .event-description-bubble {
   position: absolute;
   bottom: 110%;
@@ -175,7 +154,6 @@
   max-width: 240px;
   z-index: 10;
 }
-
 .event-description-bubble::after {
   content: "";
   position: absolute;
@@ -187,66 +165,35 @@
   border-color: white transparent transparent transparent;
 }
 
-/* Rende l'immagine flessibile e la card a larghezza piena quando serve */
-.event-card,
-.event-card-front,
-.event-card-back {
-  width: 300px;
-  height: 400px;
-}
-
-/* Su device touch: niente hover-bounce e bolle descrizione */
+/* Disabilita hover su device touch */
 @media (hover: none) {
-  .event-card:hover {
-    transform: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
   .event-description-bubble {
     display: none;
   }
 }
 
-/* Mobile: card a larghezza piena in colonna */
+/* ====== MOBILE ====== */
 @media (max-width: 768px) {
-  .event-card,
-  .event-card-front,
-  .event-card-back {
+  .event-card {
     width: 100%;
     max-width: 680px; /* limite estetico */
-    height: 380px; /* tieni flip consistente; puoi portarla a 360 */
+    margin: 0 auto; /* centra la card */
+    aspect-ratio: 3 / 4; /* scala automaticamente con la larghezza */
   }
 
-  .event-card {
-    margin: 0 auto; /* centra */
-  }
-
-  .event-card img {
-    height: 380px; /* match all’altezza card */
-    object-fit: cover;
+  /* Niente cambi di altezza fissi: riempi sempre */
+  .event-card-front,
+  .event-card-back {
+    inset: 0;
+    height: 100%;
   }
 
   .event-card-back {
-    padding: 1.25rem 1rem;
-  }
-
-  .event-card-back .event-description-text {
-    font-size: 0.95rem;
-    line-height: 1.45;
-    padding: 0 12px;
+    padding: 1rem 0.875rem;
   }
 
   .event-date {
     font-size: 0.8rem;
     padding: 0.2rem 0.45rem;
-  }
-}
-
-/* XS */
-@media (max-width: 480px) {
-  .event-card,
-  .event-card-front,
-  .event-card-back,
-  .event-card img {
-    height: 340px;
   }
 }
