@@ -85,7 +85,7 @@ const AdminPanel = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("✅ Evento pubblicato!");
-        window.dispatchEvent(new Event("refreshEvents")); // 🔁 aggiorna homepage
+        window.dispatchEvent(new Event("refreshEvents")); //
       }
 
       setForm({

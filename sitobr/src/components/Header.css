@@ -81,7 +81,6 @@
   text-decoration: none;
 }
 
-/* hover skew solo per item senza button */
 .menu li:not(:has(button)):hover {
   transform: skew(-20deg);
   background-color: #ffe600;
@@ -94,7 +93,6 @@
   color: #ffffff;
 }
 
-/* Bottone "CONTATTI" in desktop nav che sembra link */
 .menu-link-button {
   background: transparent;
   border: none;
@@ -275,7 +273,7 @@ body.no-scroll {
   cursor: pointer;
 }
 
-/* ====== CONTATTI (drawer da destra) ====== */
+/* ====== CONTATTI ====== */
 .contacts-overlay {
   position: fixed;
   inset: 0;
@@ -343,7 +341,7 @@ body.no-scroll {
   height: 22px;
 }
 
-/* ====== RESPONSIVE ====== */
+/* ====== MOBILE ====== */
 @media (max-width: 900px) {
   .header {
     padding: 1rem 1.25rem;
@@ -388,7 +386,6 @@ body.no-scroll {
     font-size: 1rem;
   }
 
-  /* contacts full width + back arrow */
   .contacts-panel {
     left: 0;
     right: 0;
@@ -398,20 +395,18 @@ body.no-scroll {
   }
   .contacts-panel h3 {
     margin-left: 44px;
-  } /* spazio per la freccia */
+  }
   .contacts-back {
     display: inline-flex;
   }
 }
 
-/* Nascondi elementi mobile su desktop (sicurezza) */
 @media (min-width: 769px) {
   .header-actions {
     display: none !important;
   }
 }
 
-/* Evita skew su tap mobile */
 @media (hover: none) {
   .menu li:not(:has(button)):hover {
     transform: none;
@@ -419,7 +414,6 @@ body.no-scroll {
   }
 }
 
-/* Tap target più grandi */
 @media (max-width: 480px) {
   .apply-button,
   .menu li {
@@ -429,7 +423,6 @@ body.no-scroll {
 
 /* ==== DESKTOP: hover giallo anche per "CONTATTI" (button) ==== */
 @media (min-width: 769px) {
-  /* stato normale del bottone-contatto: aspetto link */
   .menu-link-button,
   .menu-link-button:focus,
   .menu-link-button:active {
@@ -438,14 +431,13 @@ body.no-scroll {
     font: inherit;
     color: #333333;
     cursor: pointer;
-    padding: 0; /* il padding resta sul <li> come per gli <a> */
+    padding: 0;
   }
   .menu-link-button span {
     display: inline-block;
     transition: transform 0.2s ease;
   }
 
-  /* applica lo stesso effetto hover giallo al <li> che contiene il bottone */
   .desktop-nav .menu li:has(.menu-link-button):hover {
     transform: skew(-20deg);
     background-color: #ffe600;
@@ -458,7 +450,6 @@ body.no-scroll {
     transform: skew(20deg); /* compensazione come per gli <a> */
   }
 
-  /* (accessibilità) focus tastiera sul bottone-contatto */
   .menu-link-button:focus-visible {
     outline: 2px solid #ffe600;
     outline-offset: 2px;

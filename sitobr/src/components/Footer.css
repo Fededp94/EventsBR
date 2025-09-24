@@ -36,7 +36,7 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: transparent; /* era 'none' */
+  background-color: transparent;
   border: none;
   color: white;
   opacity: 0; /* invisibile ma cliccabile su desktop */
@@ -58,13 +58,11 @@
     font-size: 0.9rem;
   }
 
-  /* NASCONDI il bottone admin su mobile */
   .secret-admin-button {
     display: none !important;
   }
 }
 
-/* (facoltativo) forza visibile su desktop */
 @media (min-width: 769px) {
   .secret-admin-button {
     display: inline-block;

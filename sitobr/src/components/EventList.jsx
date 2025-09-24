@@ -34,12 +34,12 @@ const EventList = ({ selectedLocation, selectedMonth }) => {
 
       return matchesLocation && matchesMonth;
     })
-    .sort((a, b) => new Date(a.date) - new Date(b.date)); // 🔁 Ordina per data crescente
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const scroll = (direction) => {
     const { current } = scrollRef;
-    const cardWidth = 300; // Nuova larghezza della card
-    const gap = 20; // Nuovo gap tra le card
+    const cardWidth = 300; // larghezza della card
+    const gap = 20; // gap tra le card
     const scrollAmount = 5 * (cardWidth + gap); // Scrolla esattamente 5 card
     if (direction === "left") current.scrollLeft -= scrollAmount;
     else current.scrollLeft += scrollAmount;

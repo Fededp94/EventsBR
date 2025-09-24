@@ -1,16 +1,16 @@
 /* CARD BASE */
 .event-card {
   position: relative;
-  width: 300px; /* desktop */
-  aspect-ratio: 3 / 4; /* mantiene il rapporto 300x400 */
-  height: auto; /* nessuna altezza fissa */
+  width: 300px;
+  aspect-ratio: 3 / 4;
+  height: auto;
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background: transparent; /* niente gradiente sul contenitore (evita “bande grigie”) */
+  background: transparent;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0; /* lasciamo gestire lo spazio al gap del container */
+  margin: 0;
 }
 
 .event-card-inner {
@@ -32,11 +32,10 @@
   }
 }
 
-/* FRONT & BACK riempiono tutta la card */
 .event-card-front,
 .event-card-back {
   position: absolute;
-  inset: 0; /* = top/right/bottom/left: 0; */
+  inset: 0;
   width: 100%;
   height: 100%;
   border-radius: 8px;
@@ -57,11 +56,10 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 100%; /* riempie sempre */
+  height: 100%;
   object-fit: cover;
 }
 
-/* Back: descrizione con sfondo (se serve) */
 .event-card-back {
   transform: rotateY(180deg);
   align-items: center;
@@ -76,7 +74,6 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Testo nel retro */
 .event-card-back .event-description-text {
   color: #333;
   font-size: 1rem;
@@ -88,7 +85,6 @@
   box-sizing: border-box;
 }
 
-/* Badge data */
 .event-date {
   position: absolute;
   top: 10px;
@@ -102,7 +98,6 @@
   z-index: 3;
 }
 
-/* Info in basso */
 .event-info {
   position: absolute;
   bottom: 0;
@@ -112,12 +107,10 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* Stato evidenziato */
 .event-status {
   color: #ffe600 !important;
 }
 
-/* Azioni admin (se presenti) */
 .event-actions {
   position: absolute;
   top: 10px;
@@ -138,7 +131,6 @@
   background: #ffe600;
 }
 
-/* Tooltip descrizione su hover (desktop) */
 .event-description-bubble {
   position: absolute;
   bottom: 110%;
@@ -176,12 +168,11 @@
 @media (max-width: 768px) {
   .event-card {
     width: 100%;
-    max-width: 680px; /* limite estetico */
-    margin: 0 auto; /* centra la card */
-    aspect-ratio: 3 / 4; /* scala automaticamente con la larghezza */
+    max-width: 680px;
+    margin: 0 auto;
+    aspect-ratio: 3 / 4;
   }
 
-  /* Niente cambi di altezza fissi: riempi sempre */
   .event-card-front,
   .event-card-back {
     inset: 0;

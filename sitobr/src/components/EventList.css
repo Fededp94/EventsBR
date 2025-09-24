@@ -26,11 +26,11 @@
 }
 
 .card-grid.scrollable::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .card-grid.scrollable > * {
-  flex: 0 0 300px; /* Ogni card è larga 300px */
+  flex: 0 0 300px;
 }
 
 /* FRECCE */
@@ -83,22 +83,20 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
-    overflow: visible; /* niente scroll orizzontale */
-    padding: 0; /* togli padding ai lati */
+    overflow: visible;
+    padding: 0;
   }
 
   .card-grid.scrollable > * {
-    flex: initial; /* cancella larghezza fissa */
+    flex: initial;
     width: 100%;
   }
 
-  /* Niente frecce su mobile */
   .arrow-button {
     display: none;
   }
 }
 
-/* XS (<=480px) per spacing più stretto */
 @media (max-width: 480px) {
   .event-list h2 {
     padding-left: 0.5rem;

@@ -104,7 +104,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Mobile: NEWSLETTER a sinistra, HAMBURGER a destra */}
         <div className="header-actions">
           <button className="apply-button" onClick={handleTogglePanel}>
             <span>NEWSLETTER</span>
@@ -198,7 +197,6 @@ const Header = () => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="contacts-title">
-        {/* back arrow (solo mobile, via CSS) */}
         <button
           className="contacts-back"
           onClick={backToMobileMenu}
@@ -208,7 +206,6 @@ const Header = () => {
 
         <h3 id="contacts-title">Contatti</h3>
 
-        {/* >>> QUI L'AGGIORNAMENTO: numeri uno sotto l'altro <<< */}
         <div className="contacts-content">
           <p>
             <strong>Email:</strong> info@drinkbr.it

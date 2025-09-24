@@ -4,7 +4,7 @@ import FilterBar from "./components/FilterBar";
 import EventList from "./components/EventList";
 import Footer from "./components/Footer";
 import AdminLoginModal from "./components/AdminLoginModal";
-import "./App.css"; // assicurati di avere il file CSS
+import "./App.css";
 
 const App = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
