@@ -14,16 +14,16 @@ const beers = [
   },
   {
     id: 2,
-    name: "Ipa - Ipa",
+    name: "Christmas Triple - BabboBeer",
     image: "/images/birra-ambrata.jpg",
-    description:
-      "Birra dal gusto pieno con sentori di caramello e frutta secca.",
+    description: "Birra dal gusto pieno con sentori di cioccolato e vaniglia.",
   },
   {
     id: 3,
-    name: "Paradise Triple - BertoBeer",
+    name: "Italian Pils - House Pils",
     image: "/images/birra-scura.jpg",
-    description: "Intensa e corposa, con aromi di cioccolato e caffè.",
+    description:
+      "Birra in stile Italian Pils, in collaborazione con Heimi prevenzione e salute, composta principalmente da luppoli americani in dry hopping che donano sentori di agrumato, floreale e fruttato, accompagnati da un corpo scorrevole ma presente. Gradazione alcolica del 5% che rende la bevuta molto semplice e rinfrescante.",
   },
 ];
 
