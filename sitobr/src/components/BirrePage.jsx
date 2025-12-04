@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./BirrePage.css";
 import ItalianPilsImg from "../components/images/ItalianPils.jpg";
+import HeimiImg from "../components/images/Heimi.jpg";
 
 const beers = [
   {
@@ -21,7 +22,7 @@ const beers = [
   {
     id: 3,
     name: "Italian Pils - House Pils",
-    image: "/images/birra-scura.jpg",
+    image: HeimiImg,
     description:
       "Birra in stile Italian Pils, in collaborazione con Heimi prevenzione e salute, composta principalmente da luppoli americani in dry hopping che donano sentori di agrumato, floreale e fruttato, accompagnati da un corpo scorrevole ma presente. Gradazione alcolica del 5% che rende la bevuta molto semplice e rinfrescante.",
   },
