@@ -4,6 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import "./BirrePage.css";
 import ItalianPilsImg from "../components/images/ItalianPils.jpg";
 import HeimiImg from "../components/images/Heimi.jpg";
+import ChristmasTriple from "../components/images/FrontChristmas.jpg";
 
 const beers = [
   {
@@ -15,8 +16,8 @@ const beers = [
   },
   {
     id: 2,
-    name: "Christmas Triple - BabboBeer",
-    image: "/images/birra-ambrata.jpg",
+    name: "Christmas Triple - Holy Hangover",
+    image: ChristmasTriple,
     description: "Birra dal gusto pieno con sentori di cioccolato e vaniglia.",
   },
   {
