@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AdminLoginModal.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../../api"; // ⬅️ QUI
 
 const AdminLoginModal = () => {
   const [visible, setVisible] = useState(false);
@@ -18,13 +18,10 @@ const AdminLoginModal = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await api.post("/api/auth/login", {
+        email,
+        password,
+      });
 
       const token = response.data.token;
       localStorage.setItem("token", token);

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import EventCard from "./EventCard";
-import axios from "axios";
+import { api } from "../../api"; // ⬅️ QUI
 import "./EventList.css";
 
 const EventList = ({ selectedLocation, selectedMonth }) => {
@@ -10,8 +10,8 @@ const EventList = ({ selectedLocation, selectedMonth }) => {
   const [events, setEvents] = useState([]);
 
   const fetchEvents = () => {
-    axios
-      .get("http://localhost:8080/api/events/public")
+    api
+      .get("/api/events/public")
       .then((res) => setEvents(res.data))
       .catch((err) => console.error("Errore nel caricamento eventi:", err));
   };

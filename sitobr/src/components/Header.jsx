@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./Header.css";
 import Logo from "../components/images/LogoBr.png";
-import axios from "axios";
+import { api } from "../../api"; // ⬅️ USIAMO IL CLIENT API
 
 const Header = () => {
   const [showPanel, setShowPanel] = useState(false); // newsletter
@@ -23,7 +23,8 @@ const Header = () => {
   const handleSubscribe = async () => {
     if (!email) return;
     try {
-      await axios.post("http://localhost:8080/api/subscribe", { email });
+      // ⬇️ NIENTE PIÙ localhost:8080
+      await api.post("/api/subscribe", { email });
       setMessage("✅ Iscrizione avvenuta con successo!");
       setEmail("");
     } catch (error) {

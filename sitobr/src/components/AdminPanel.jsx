@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { api } from "../../api"; // ⬅️ QUI
 import EventCard from "./EventCard";
 import "./AdminPanel.css";
 
@@ -27,8 +27,8 @@ const AdminPanel = () => {
   }, []);
 
   const fetchEvents = () => {
-    axios
-      .get("http://localhost:8080/api/events/admin", {
+    api
+      .get("/api/events/admin", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setEvents(res.data))
@@ -52,10 +52,7 @@ const AdminPanel = () => {
       if (form.image && typeof form.image !== "string") {
         const imageForm = new FormData();
         imageForm.append("file", form.image);
-        const uploadRes = await axios.post(
-          "http://localhost:8080/api/events/admin/upload",
-          imageForm
-        );
+        const uploadRes = await api.post("/api/events/admin/upload", imageForm);
         imageUrl = uploadRes.data;
       } else if (typeof form.image === "string") {
         imageUrl = form.image;
@@ -72,16 +69,12 @@ const AdminPanel = () => {
       }
 
       if (editingId) {
-        await axios.put(
-          `http://localhost:8080/api/events/admin/${editingId}`,
-          eventData,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        await api.put(`/api/events/admin/${editingId}`, eventData, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         alert("✅ Evento aggiornato!");
       } else {
-        await axios.post("http://localhost:8080/api/events/admin", eventData, {
+        await api.post("/api/events/admin", eventData, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("✅ Evento pubblicato!");
@@ -113,7 +106,7 @@ const AdminPanel = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Vuoi davvero eliminare questo evento?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/events/admin/${id}`, {
+        await api.delete(`/api/events/admin/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         fetchEvents();

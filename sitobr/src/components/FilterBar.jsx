@@ -14,7 +14,6 @@ const FilterBar = ({
         onChange={(e) => setSelectedLocation(e.target.value)}>
         <option value="">Tutti i luoghi</option>
         <option value="milano">Milano</option>
-        <option value="cernobbio">Cernobbio</option>
         <option value="napoli">Napoli</option>
       </select>
 
